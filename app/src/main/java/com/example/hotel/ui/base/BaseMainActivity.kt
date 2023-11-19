@@ -1,7 +1,6 @@
 package com.example.hotel.ui.base
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.fragment.app.FragmentActivity
 import com.example.hotel.databinding.ActivityMainBinding
 

@@ -1,8 +1,8 @@
 package com.example.data.source
 
 import com.example.domain.models.ResponseResult
-import com.example.domain.models.Room
+import com.example.domain.models.Rooms
 
 interface RoomDataSource {
-    suspend fun getRoom(): ResponseResult<List<Room>>
+    suspend fun getRoom(): ResponseResult<Rooms>
 }

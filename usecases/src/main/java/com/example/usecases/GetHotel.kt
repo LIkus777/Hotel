@@ -6,5 +6,4 @@ import com.example.domain.models.ResponseResult
 
 class GetHotel(private val hotelRepository: HotelRepository) {
     suspend operator fun invoke(): ResponseResult<Hotel> = hotelRepository.getHotel()
-    suspend operator fun invoke(url: String): ResponseResult<String> = hotelRepository.getImage(url)
 }

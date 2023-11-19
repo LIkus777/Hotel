@@ -5,5 +5,4 @@ import com.example.domain.models.ResponseResult
 
 interface HotelDataSource {
     suspend fun getHotel(): ResponseResult<Hotel>
-    suspend fun getImage(url: String): ResponseResult<String>
 }

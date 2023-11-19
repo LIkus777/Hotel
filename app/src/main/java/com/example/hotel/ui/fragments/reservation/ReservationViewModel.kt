@@ -14,5 +14,4 @@ class ReservationViewModel(
             getReservation.invoke()
         }
     }
-
 }

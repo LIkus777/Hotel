@@ -30,7 +30,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="wrap_content"
-            android:layout_height="566dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:padding="12px"
             app:layout_constraintEnd_toEndOf="parent"
@@ -139,14 +139,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
                 android:background="@color/gray_light"
                 android:text="за тур с перелётом"
                 android:textColor="@color/gray_thin"
                 android:textSize="14dp"
                 app:fontFamily="@font/sf_pro_display_light"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_price"
                 app:layout_constraintStart_toEndOf="@+id/tv_price"
-                app:layout_constraintTop_toTopOf="@id/tv_price" />
+                app:layout_constraintTop_toTopOf="@+id/tv_price" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/hint2"
@@ -204,13 +204,12 @@
                 android:id="@+id/tv_happy2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
                 android:layout_marginTop="8dp"
                 android:text="Самое необходимое"
                 android:textColor="@color/gray_thin"
                 android:textSize="13dp"
                 app:fontFamily="@font/sf_pro_display_light"
-                app:layout_constraintStart_toEndOf="@+id/img_happy"
+                app:layout_constraintStart_toStartOf="@+id/tv_happy1"
                 app:layout_constraintTop_toBottomOf="@+id/tv_happy1" />
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -261,14 +260,13 @@
                 android:id="@+id/tv_tick2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
 
+                android:layout_marginTop="8dp"
                 android:text="Самое необходимое"
                 android:textColor="@color/gray_thin"
                 android:textSize="13dp"
                 app:fontFamily="@font/sf_pro_display_light"
-                app:layout_constraintStart_toEndOf="@+id/img_tick"
+                app:layout_constraintStart_toStartOf="@+id/tv_tick1"
                 app:layout_constraintTop_toBottomOf="@+id/tv_tick1" />
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -318,13 +316,12 @@
                 android:id="@+id/tv_close2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
                 android:layout_marginTop="8dp"
                 android:text="Самое необходимое"
                 android:textColor="@color/gray_thin"
                 android:textSize="13dp"
                 app:fontFamily="@font/sf_pro_display_light"
-                app:layout_constraintStart_toEndOf="@+id/img_tick"
+                app:layout_constraintStart_toStartOf="@+id/tv_close1"
                 app:layout_constraintTop_toBottomOf="@+id/tv_close1" />
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -362,6 +359,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_to_room_choose"
             android:layout_width="330dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"

@@ -1,7 +1,11 @@
 package com.example.domain.models
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+
+@Serializable
+data class Rooms(
+    val rooms: List<Room>
+)
 
 @Serializable
 data class Room (
