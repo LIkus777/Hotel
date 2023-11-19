@@ -16,7 +16,7 @@ private const val RESPONSE_MESSAGE = "message"
 suspend fun <T : Any> safeApiCall(call: suspend () -> Response<T>) = try {
     val response = call.invoke()
     if (response.isSuccessful) {
-        ResponseResult.Success(response.body())
+        ResponseResult.Success(data = response.body())
     } else {
         val message = try {
             val jsonObject = response.errorBody()?.string()?.let { JSONObject(it) }
@@ -27,5 +27,5 @@ suspend fun <T : Any> safeApiCall(call: suspend () -> Response<T>) = try {
         ResponseResult.Failure(message = message ?: "", code = response.code())
     }
 } catch (exception: IOException) {
-    ResponseResult.Error(exception)
+    ResponseResult.Error(exception = exception)
 }

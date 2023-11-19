@@ -1,7 +1,7 @@
-package com.example.hotel.ui
+package com.example.hotel.ui.activity
 
-import com.example.hotel.ui.BaseMainActivity
-import com.example.hotel.ui.BaseMainViewModel
+import com.example.hotel.ui.base.BaseMainActivity
+import com.example.hotel.ui.base.BaseMainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseMainActivity() {

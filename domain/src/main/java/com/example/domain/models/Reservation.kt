@@ -6,41 +6,18 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Reservation (
     val id: Long,
-
-    @SerialName(value = "hotel_name")
-    val hotelName: String,
-
-    @SerialName(value = "hotel_adress")
-    val hotelAdress: String,
-
+    val hotel_name: String,
+    val hotel_adress: String,
     val horating: Long,
-
-    @SerialName(value = "rating_name")
-    val ratingName: String,
-
+    val rating_name: String,
     val departure: String,
-
-    @SerialName(value = "arrival_country")
-    val arrivalCountry: String,
-
-    @SerialName(value = "tour_date_start")
-    val tourDateStart: String,
-
-    @SerialName(value = "tour_date_stop")
-    val tourDateStop: String,
-
-    @SerialName(value = "number_of_nights")
-    val numberOfNights: Long,
-
+    val arrival_country: String,
+    val tour_date_start: String,
+    val tour_date_stop: String,
+    val number_of_nights: Long,
     val room: String,
     val nutrition: String,
-
-    @SerialName(value = "tour_price")
-    val tourPrice: Long,
-
-    @SerialName(value = "fuel_charge")
-    val fuelCharge: Long,
-
-    @SerialName(value = "service_charge")
-    val serviceCharge: Long
+    val tour_price: Long,
+    val fuel_charge: Long,
+    val service_charge: Long
 )

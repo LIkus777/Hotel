@@ -1,4 +1,4 @@
-package com.example.hotel.ui
+package com.example.hotel.ui.base
 
 import androidx.lifecycle.ViewModel
 

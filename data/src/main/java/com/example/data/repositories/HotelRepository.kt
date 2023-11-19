@@ -6,7 +6,7 @@ import com.example.domain.models.ResponseResult
 
 class HotelRepository(
     private val hotelDataSource: HotelDataSource,
-
 ) {
     suspend fun getHotel(): ResponseResult<Hotel> = hotelDataSource.getHotel()
+    suspend fun getImage(url: String): ResponseResult<String> = hotelDataSource.getImage(url)
 }

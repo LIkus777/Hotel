@@ -8,6 +8,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 private const val CONVERTER_CONTENT_TYPE = "applicaiton/json"
 
@@ -19,9 +20,7 @@ val networkModule = module {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(
-                Json { ignoreUnknownKeys = true }.asConverterFactory(
-                    CONVERTER_CONTENT_TYPE.toMediaType()
-                )
+                GsonConverterFactory.create()
             )
             .client(get())
             .build()

@@ -8,12 +8,7 @@ data class Room (
     val id: Long,
     val name: String,
     val price: Long,
-
-    @SerialName(value = "price_per")
-    val pricePer: String,
-
+    val price_per: String,
     val peculiarities: List<String>,
-
-    @SerialName(value = "image_urls")
-    val imageUrls: List<String>
+    val image_urls: List<String>
 )

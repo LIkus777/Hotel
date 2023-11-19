@@ -9,21 +9,10 @@ data class Hotel (
     val id: Long,
     val name: String,
     val adress: String,
-
-    @SerialName(value = "minimal_price")
-    val minimalPrice: Long,
-
-    @SerialName(value = "price_for_it")
-    val priceForIt: String,
-
+    val minimal_price: Long,
+    val price_for_it: String,
     val rating: Long,
-
-    @SerialName(value = "rating_name")
-    val ratingName: String,
-
-    @SerialName(value = "image_urls")
-    val imageUrls: List<String>,
-
-    @SerialName(value = "about_the_hotel")
-    val aboutTheHotel: AboutTheHotel
+    val rating_name: String,
+    val image_urls: List<String>,
+    val about_the_hotel: AboutTheHotel
 )

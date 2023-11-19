@@ -30,11 +30,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         viewBinding = true
@@ -52,12 +52,24 @@ dependencies {
 
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":data")))
+    implementation(project(mapOf("path" to ":usecases")))
+
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+    //Coil
+    implementation ("io.coil-kt:coil:1.1.1")
+
+    //Carousel
+    implementation ("com.synnapps:carouselview:0.1.4")
 
     detektPlugins ("io.gitlab.arturbosch.detekt:detekt-formatting:$detekt_version")
 
     //AppCompat
     val appcompat_version = "1.6.1"
     implementation ("androidx.appcompat:appcompat:$appcompat_version")
+
+    implementation ("com.squareup.retrofit2:converter-gson:2.3.0")
 
     //Retrofit Converter
     implementation ("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
@@ -89,7 +101,7 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
 
     // Koin for Andnroid
-    val koin_version = "3.4.3"
+    val koin_version = "3.5.0"
     implementation ("io.insert-koin:koin-android:$koin_version")
 
     //Material Design
