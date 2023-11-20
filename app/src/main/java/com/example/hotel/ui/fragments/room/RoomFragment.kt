@@ -11,22 +11,39 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.domain.models.ResponseResult
-import com.example.domain.models.Room
+import com.example.hotel.R
 import com.example.hotel.databinding.FragmentRoomBinding
 import com.example.hotel.extensions.navigateSafe
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RoomFragment : Fragment() {
 
-    private val binding by lazy(LazyThreadSafetyMode.NONE) { FragmentRoomBinding.inflate(layoutInflater) }
+    private val binding by lazy(LazyThreadSafetyMode.NONE) {
+        FragmentRoomBinding.inflate(
+            layoutInflater
+        )
+    }
     private val viewModel: RoomViewModel by viewModel()
     private val roomAdapter by lazy(LazyThreadSafetyMode.NONE) {
-        RoomAdapter(onChooseRoomClick = { toReservation()}, loadImage = { uri, imageView -> glideLoad(uri, imageView) })
+        RoomAdapter(
+            onChooseRoomClick = { toReservation() },
+            loadImage = { uri, imageView -> glideLoad(uri, imageView) }
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.apply {
+            toolbar.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.back -> {
+                        parentFragmentManager.popBackStack()
+                        true
+                    }
+
+                    else -> false
+                }
+            }
             recyclerView.apply {
                 adapter = roomAdapter
             }
@@ -42,12 +59,13 @@ class RoomFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.roomLiveData.observe(viewLifecycleOwner) { result ->
-            when(result) {
+            when (result) {
                 is ResponseResult.Success -> {
                     Log.i("TAG", "onViewCreated: ${result.data}")
                     Log.i("TAG", "onViewCreated: ${result.data?.rooms}")
                     roomAdapter.submitList(result.data?.rooms)
                 }
+
                 is ResponseResult.Error -> {}
                 is ResponseResult.Failure -> {}
             }
@@ -63,5 +81,4 @@ class RoomFragment : Fragment() {
     private fun toReservation() {
         findNavController().navigateSafe(RoomFragmentDirections.actionRoomFragmentToReservationFragment())
     }
-
 }

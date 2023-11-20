@@ -1,5 +1,6 @@
 package com.example.hotel.ui.fragments.room
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Room
 import com.example.hotel.databinding.ItemRoomBinding
-import com.google.android.material.textview.MaterialTextView
+import com.example.hotel.extensions.bindPeculiarities
 import com.synnapps.carouselview.ImageListener
 
 class RoomAdapter(
@@ -18,7 +19,8 @@ class RoomAdapter(
     private val loadImage: (uri: Uri, imageView: ImageView) -> Unit
 ) : ListAdapter<Room, RoomAdapter.ViewHolder>(DIFF_CALLBACK) {
 
-    inner class ViewHolder(private val bindind: ItemRoomBinding): RecyclerView.ViewHolder(bindind.root) {
+    inner class ViewHolder(private val bindind: ItemRoomBinding) : RecyclerView.ViewHolder(bindind.root) {
+        @SuppressLint("SetTextI18n")
         fun bindData(room: Room) {
             bindind.apply {
                 with(room) {
@@ -35,14 +37,6 @@ class RoomAdapter(
                     carousel.pageCount = image_urls.size
                     btnChooseRoom.setOnClickListener { onChooseRoomClick.invoke() }
                 }
-            }
-        }
-    }
-
-    private fun bindPeculiarities(listTv: List<MaterialTextView>, listStrings: List<String>) {
-        listStrings.forEachIndexed { index, s ->
-            if (index < listTv.size) {
-                listTv[index].text = s
             }
         }
     }

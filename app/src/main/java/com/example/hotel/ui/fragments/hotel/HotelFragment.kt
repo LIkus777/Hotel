@@ -9,16 +9,21 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.domain.models.Hotel
 import com.example.domain.models.ResponseResult
 import com.example.hotel.databinding.FragmentHotelBinding
+import com.example.hotel.extensions.bindPeculiarities
 import com.example.hotel.extensions.navigateSafe
-import com.google.android.material.textview.MaterialTextView
 import com.synnapps.carouselview.ImageListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HotelFragment : Fragment() {
 
-    private val binding by lazy(LazyThreadSafetyMode.NONE) { FragmentHotelBinding.inflate(layoutInflater) }
+    private val binding by lazy(LazyThreadSafetyMode.NONE) {
+        FragmentHotelBinding.inflate(
+            layoutInflater
+        )
+    }
     private val viewModel: HotelViewModel by viewModel()
 
     override fun onCreateView(
@@ -27,39 +32,12 @@ class HotelFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View = binding.root
 
-    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.hotelLiveData.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is ResponseResult.Success -> {
-                    with(binding) {
-                        with(result.data) {
-                            this?.let {
-                                tvStar.text = "$rating $rating_name"
-                                tvHotelName.text = name
-                                tvAdress.text = adress
-                                tvPrice.text = "${tvPrice.text} $minimal_price ₽"
-                                tvPriceForIt.text = price_for_it
-                                tvHotelDescription.text = about_the_hotel.description
-
-                                bindPeculiarities(
-                                    listOf(peculiarities1, peculiarities2, peculiarities3, peculiarities4), about_the_hotel.peculiarities
-                                )
-
-                                val imgListener = ImageListener { position, imageView ->
-                                    if (imageView != null) {
-                                        Glide.with(requireContext())
-                                            .load(image_urls[position].toUri())
-                                            .into(imageView)
-                                    }
-                                }
-
-                                binding.carousel.setImageListener(imgListener)
-                                binding.carousel.pageCount = image_urls.size
-                            }
-                        }
-                    }
+                    result.data?.let { bindData(it) }
                 }
 
                 is ResponseResult.Error -> {}
@@ -71,9 +49,33 @@ class HotelFragment : Fragment() {
         }
     }
 
-    private fun bindPeculiarities(listTv: List<MaterialTextView>, listStrings: List<String>) {
-        listStrings.forEachIndexed { index, s ->
-            listTv[index].text = s
+    @SuppressLint("SetTextI18n")
+    private fun bindData(hotel: Hotel) {
+        with(binding) {
+            with(hotel) {
+                tvStar.text = "$rating $rating_name"
+                tvHotelName.text = name
+                tvAdress.text = adress
+                tvPrice.text = "${tvPrice.text} $minimal_price ₽"
+                tvPriceForIt.text = price_for_it
+                tvHotelDescription.text = about_the_hotel.description
+
+                bindPeculiarities(
+                    listOf(peculiarities1, peculiarities2, peculiarities3, peculiarities4),
+                    about_the_hotel.peculiarities
+                )
+
+                val imgListener = ImageListener { position, imageView ->
+                    if (imageView != null) {
+                        Glide.with(requireContext())
+                            .load(image_urls[position].toUri())
+                            .into(imageView)
+                    }
+                }
+
+                binding.carousel.setImageListener(imgListener)
+                binding.carousel.pageCount = image_urls.size
+            }
         }
     }
 }

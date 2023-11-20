@@ -54,7 +54,7 @@ dependencies {
     implementation(project(mapOf("path" to ":data")))
     implementation(project(mapOf("path" to ":usecases")))
 
-    implementation ("com.androidx.support:design:28.0.0")
+    implementation ("com.android.support:design:28.0.0")
 
     //AdapterDelegate
     implementation ("io.github.d00mch:delegateadapter:4.1")

@@ -20,11 +20,9 @@ class RoomViewModel(
     init {
         getRoom()
     }
-
     private fun getRoom() {
         viewModelScope.launch(Dispatchers.IO) {
             _roomLiveData.postValue(getRoom.invoke())
         }
     }
-
 }

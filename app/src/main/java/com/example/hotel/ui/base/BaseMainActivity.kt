@@ -1,10 +1,10 @@
 package com.example.hotel.ui.base
 
 import android.os.Bundle
-import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.hotel.databinding.ActivityMainBinding
 
-abstract class BaseMainActivity : FragmentActivity() {
+abstract class BaseMainActivity : AppCompatActivity() {
 
     protected val binding by lazy(LazyThreadSafetyMode.NONE) {
         ActivityMainBinding.inflate(
