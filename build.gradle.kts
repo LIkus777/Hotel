@@ -4,6 +4,7 @@ buildscript {
     dependencies {
         classpath(group = "org.jetbrains.kotlin", name = "kotlin-serialization", version = "1.8.0")
         classpath(group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version = "2.6.0")
+        classpath (group = "com.android.tools.build", name = "gradle", version = "3.4.2")
     }
 }
 

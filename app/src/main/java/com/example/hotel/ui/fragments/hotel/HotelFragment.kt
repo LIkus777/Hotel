@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.domain.models.ResponseResult
 import com.example.hotel.databinding.FragmentHotelBinding
 import com.example.hotel.extensions.navigateSafe
+import com.google.android.material.textview.MaterialTextView
 import com.synnapps.carouselview.ImageListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,13 +39,13 @@ class HotelFragment : Fragment() {
                                 tvStar.text = "$rating $rating_name"
                                 tvHotelName.text = name
                                 tvAdress.text = adress
-                                tvPrice.text = "${tvPrice.text} $minimal_price"
+                                tvPrice.text = "${tvPrice.text} $minimal_price ₽"
                                 tvPriceForIt.text = price_for_it
                                 tvHotelDescription.text = about_the_hotel.description
-                                hint1.text = about_the_hotel.peculiarities[0]
-                                hint2.text = about_the_hotel.peculiarities[1]
-                                hint3.text = about_the_hotel.peculiarities[2]
-                                hint4.text = about_the_hotel.peculiarities[3]
+
+                                bindPeculiarities(
+                                    listOf(peculiarities1, peculiarities2, peculiarities3, peculiarities4), about_the_hotel.peculiarities
+                                )
 
                                 val imgListener = ImageListener { position, imageView ->
                                     if (imageView != null) {
@@ -67,6 +68,12 @@ class HotelFragment : Fragment() {
         }
         binding.btnToRoomChoose.setOnClickListener {
             findNavController().navigateSafe(HotelFragmentDirections.actionHotelFragmentToRoomFragment())
+        }
+    }
+
+    private fun bindPeculiarities(listTv: List<MaterialTextView>, listStrings: List<String>) {
+        listStrings.forEachIndexed { index, s ->
+            listTv[index].text = s
         }
     }
 }

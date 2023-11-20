@@ -54,11 +54,13 @@ dependencies {
     implementation(project(mapOf("path" to ":data")))
     implementation(project(mapOf("path" to ":usecases")))
 
+    implementation ("com.androidx.support:design:28.0.0")
+
+    //AdapterDelegate
+    implementation ("io.github.d00mch:delegateadapter:4.1")
+
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
-
-    //Coil
-    implementation ("io.coil-kt:coil:1.1.1")
 
     //Carousel
     implementation ("com.synnapps:carouselview:0.1.4")

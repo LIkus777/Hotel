@@ -6,7 +6,9 @@
     <color name="gray">#FF6C6C6C</color>
     <color name="gray_thin">#FF828796</color>
     <color name="gray_light">#FFFAFAFA</color>
-    <color name="blue_light">#FF0D72FF</color>
+    <color name="blue">#FF0D72FF</color>
+    <color name="blue_light">#CBE0FF</color>
     <color name="yellow">#FFA800</color>
     <color name="yellow_light">#FFEDAD</color>
+    <color name="ultraLightGray">#F3F3F3</color>
 </resources>

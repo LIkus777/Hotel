@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Hotel</string>
+    <string name="hint_name">Имя</string>
+    <string name="hint_last_name">Фамилия</string>
+    <string name="hint_date_born">Дата рождения</string>
+    <string name="hint_citizenship">Гражданство</string>
+    <string name="hint_passport_number">Номер загранпаспорта</string>
+    <string name="hint_passport_date">Срок дейтсвия загран паспорта</string>
 </resources>
